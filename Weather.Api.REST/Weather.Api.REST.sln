@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.Api.REST", "Weather
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Api.Infrastructure", "..\Weather.Api.Infrastructure\Weather.Api.Infrastructure.csproj", "{5BAFF7AB-6DF6-43B4-A9CE-8F11E35A94D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Api.Core", "..\Weather.Api.Core\Weather.Api.Core.csproj", "{A319DF6A-D997-4774-BE53-B6C06A0075F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5BAFF7AB-6DF6-43B4-A9CE-8F11E35A94D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BAFF7AB-6DF6-43B4-A9CE-8F11E35A94D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BAFF7AB-6DF6-43B4-A9CE-8F11E35A94D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A319DF6A-D997-4774-BE53-B6C06A0075F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A319DF6A-D997-4774-BE53-B6C06A0075F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A319DF6A-D997-4774-BE53-B6C06A0075F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A319DF6A-D997-4774-BE53-B6C06A0075F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
