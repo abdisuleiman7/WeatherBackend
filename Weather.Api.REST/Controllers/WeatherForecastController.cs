@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Weather.Api.Core;
 
 namespace Weather.Api.REST.Controllers;
 
@@ -6,27 +7,31 @@ namespace Weather.Api.REST.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly IWeatherProvider _weatherProvider;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger,IWeatherProvider weatherProvider)
     {
         _logger = logger;
+        _weatherProvider = weatherProvider;
+
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    [HttpGet(Name = "GetWeatherForecastByCityName")]
+    public Task<WeatherInfo> GetWeather(string cityName)
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+
+          return _weatherProvider.GetWeatherDataAsync(cityName);
+        
     }
+
+    // [HttpGet(Name = "GetWeatherForecastByCoordinates")]
+    // public Task<WeatherInfo> GetWeather(float lat, float lon)
+    // {
+
+    //     return _weatherProvider.GetWeatherDataAsync(lat, lon);
+
+    // }
+
 }
