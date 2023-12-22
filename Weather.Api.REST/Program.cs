@@ -9,6 +9,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IWeatherProvider, WeatherProvider>();
+builder.Configuration.AddJsonFile("appsettings.Development.json",
+        optional: true,
+        reloadOnChange: true);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
