@@ -4,7 +4,7 @@ using Weather.Api.Core;
 namespace Weather.Api.REST.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class WeatherForecastController : ControllerBase
 {
 
@@ -18,20 +18,19 @@ public class WeatherForecastController : ControllerBase
 
     }
 
-    [HttpGet(Name = "GetWeatherForecastByCityName")]
-    public Task<WeatherInfo> GetWeather(string cityName)
+    [HttpGet("GetWeather/{cityName}")]
+    public Task<WeatherInfo> GetWeatherByCityName(string cityName)
     {
 
-          return _weatherProvider.GetWeatherDataAsync(cityName);
+          return _weatherProvider.GetWeatherByLocation(cityName);
         
     }
 
-    // [HttpGet(Name = "GetWeatherForecastByCoordinates")]
-    // public Task<WeatherInfo> GetWeather(float lat, float lon)
-    // {
+    [HttpGet("GetWeather/{lon}/{lat}")]
+    public Task<WeatherInfo> GetWeatherByCoordinates(float lon,float lat)
+    {
+        return _weatherProvider.GetWeatherByCoordinates(lon,lat);
 
-    //     return _weatherProvider.GetWeatherDataAsync(lat, lon);
-
-    // }
+    }
 
 }
