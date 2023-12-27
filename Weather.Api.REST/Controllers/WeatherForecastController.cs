@@ -19,18 +19,15 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet("GetWeather/{cityName}")]
-    public Task<WeatherInfo> GetWeatherByCityName(string cityName)
+    public Task<WeatherResult> GetWeatherByCityName(string cityName)
     {
-
-          return _weatherProvider.GetWeatherByLocation(cityName);
-        
+        return new WeatherResult().WeatherMapping(_weatherProvider.GetWeatherByLocation(cityName));
     }
 
     [HttpGet("GetWeather/{lon}/{lat}")]
-    public Task<WeatherInfo> GetWeatherByCoordinates(float lon,float lat)
+    public Task<WeatherResult> GetWeatherByCoordinates(float lon, float lat)
     {
-        return _weatherProvider.GetWeatherByCoordinates(lon,lat);
-
+        return new WeatherResult().WeatherMapping(_weatherProvider.GetWeatherByCoordinates(lon, lat));
     }
 
 }
